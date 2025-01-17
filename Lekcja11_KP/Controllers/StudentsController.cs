@@ -31,5 +31,11 @@ namespace Lekcja11_KP.Controllers
            list.Add(st2);
             return View(list);
         }
+
+        [HttpPost]
+        public IActionResult Add(Student newStudent)
+        {
+            return RedirectToAction("ListaStudentow");
+        }
     }
 }
