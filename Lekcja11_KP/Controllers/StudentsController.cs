@@ -1,5 +1,13 @@
 ﻿using Lekcja11_KP.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
+using System.Diagnostics.Eventing.Reader;
+using System.Linq;
+using System.Text.Json;
+
 
 namespace Lekcja11_KP.Controllers
 {
@@ -9,33 +17,19 @@ namespace Lekcja11_KP.Controllers
         public IActionResult Index()
         {
             return View();
+            
         }
         [HttpGet]
         public IActionResult Listastudentow()
         {
-            var list = new List<Student>();
-            var st1 = new Student
-            {
-                Id = 1,
-                Name = "Jan",
-                Lname = "Kowalski"
-
-            };
-            var st2 = new Student
-            {
-                Id = 2,
-                Name = "Jan",
-                Lname = "Nowak"
-            };
-           list.Add(st1);
-           list.Add(st2);
-            return View(list);
+            var dane = new _2019sbdContext().Students.ToList(); 
+            return View(dane);
         }
 
-        [HttpPost]
+      [HttpPost]
         public IActionResult Add(Student newStudent)
         {
-            return RedirectToAction("ListaStudentow");
-        }
+           return RedirectToAction("ListaStudentow");
+       }
     }
 }

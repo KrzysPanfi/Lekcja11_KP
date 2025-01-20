@@ -1,9 +1,13 @@
-﻿namespace Lekcja11_KP.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace Lekcja11_KP.Models;
+
+public partial class Student
 {
-    public class Student
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Lname { get; set; }
-    }
+    public int IdProduct { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public string Lname { get; set; } = null!;
 }
