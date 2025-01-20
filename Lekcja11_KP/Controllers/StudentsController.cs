@@ -1,13 +1,5 @@
 ﻿using Lekcja11_KP.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text.Json;
-using System.Collections.Generic;
 namespace Lekcja11_KP.Controllers
 {
     public class StudentsController : Controller
@@ -29,7 +21,7 @@ namespace Lekcja11_KP.Controllers
         public IActionResult Add(Student newStudent)
         {
             var context=new _2019sbdContext();
-            var StudentId = context.Students.ToList().Count;
+            var StudentId = context.Students.ToList().Count+1;
             newStudent.IdProduct= StudentId;
             context.Students.Add(newStudent);
             context.SaveChanges();
