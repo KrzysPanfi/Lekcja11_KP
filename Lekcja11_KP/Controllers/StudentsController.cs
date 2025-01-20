@@ -7,8 +7,7 @@ using Microsoft.Identity.Client;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text.Json;
-
-
+using System.Collections.Generic;
 namespace Lekcja11_KP.Controllers
 {
     public class StudentsController : Controller
@@ -29,7 +28,12 @@ namespace Lekcja11_KP.Controllers
       [HttpPost]
         public IActionResult Add(Student newStudent)
         {
-           return RedirectToAction("ListaStudentow");
+            var context=new _2019sbdContext();
+            var StudentId = context.Students.ToList().Count;
+            newStudent.IdProduct= StudentId;
+            context.Students.Add(newStudent);
+            context.SaveChanges();
+            return RedirectToAction("ListaStudentow");
        }
     }
 }
