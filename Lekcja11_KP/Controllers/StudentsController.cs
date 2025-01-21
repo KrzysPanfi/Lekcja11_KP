@@ -4,13 +4,7 @@ namespace Lekcja11_KP.Controllers
 {
     public class StudentsController : Controller
     {
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-            
-        }
-        [HttpGet]
+        
         public IActionResult Listastudentow()
         {
             var dane = new _2019sbdContext().Students.ToList(); 
