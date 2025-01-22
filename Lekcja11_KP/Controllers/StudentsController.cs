@@ -4,7 +4,7 @@ namespace Lekcja11_KP.Controllers
 {
     public class StudentsController : Controller
     {
-        
+        [HttpGet]
         public IActionResult Listastudentow()
         {
             var dane = new _2019sbdContext().Students.ToList(); 
@@ -14,12 +14,12 @@ namespace Lekcja11_KP.Controllers
       [HttpPost]
         public IActionResult Add(Student newStudent)
         {
-            var context=new _2019sbdContext();
-            var StudentId = context.Students.ToList().Count+1;
-            newStudent.IdProduct= StudentId;
+            var context = new _2019sbdContext();
+            var StudentId = context.Students.ToList().Count + 1;
+            newStudent.IdProduct = StudentId;
             context.Students.Add(newStudent);
             context.SaveChanges();
-            return RedirectToAction("ListaStudentow");
+            return RedirectToAction("Listastudentow");
        }
     }
 }
